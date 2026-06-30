@@ -484,8 +484,8 @@ jobs:
         with:
           push: true
           tags: |
-            devopsshack/nodejs-app:${{ github.sha }}
-            devopsshack/nodejs-app:latest
+            sumit1777/nodejs-app:${{ github.sha }}
+            sumit1777/nodejs-app:latest
 
 
   update-qa-manifest:
