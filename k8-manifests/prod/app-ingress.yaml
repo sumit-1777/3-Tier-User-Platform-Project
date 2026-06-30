@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: adityajaiswal.com
+    - host: devopssumit.shop
       http:
         paths:
           - path: /
