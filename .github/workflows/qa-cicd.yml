@@ -540,12 +540,23 @@ jobs:
 
       - name: Generate kubeconfig for EKS
         run: aws eks update-kubeconfig --region "${AWS_REGION}" --name "${EKS_CLUSTER_NAME}"
-
+      
+      - name: Debug kubeconfig
+        run: |
+             kubectl version --client
+             kubectl config current-context
+             kubectl config view --minify
+       
+      - name: Test EKS token
+        run: |
+              aws eks get-token \
+              --cluster-name "${EKS_CLUSTER_NAME}" \
+              --region "${AWS_REGION}"     
       - name: Verify identity
         run: |
           aws sts get-caller-identity
           kubectl config current-context
-
+      
       - name: Verify namespace access
         run: |
           kubectl get pods -n "${K8S_NAMESPACE}"
